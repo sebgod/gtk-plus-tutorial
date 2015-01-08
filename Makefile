@@ -1,5 +1,6 @@
 # Samples from: https://de.wikibooks.org/wiki/GTK_mit_Builder
-GTK_FLAGS := $(shell pkg-config --cflags --libs gtk+-3.0 gmodule-2.0)
+GTK_FLAGS := $(shell pkg-config --cflags --libs gtk+-3.0 gmodule-2.0 || \
+	pkg-config --cflags --libs gtk+-2.0 gmodule-2.0)
 
 PROGS :=\
 	hello_world              \

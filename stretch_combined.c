@@ -2,6 +2,7 @@
  
 int main (int argc, char *argv[])
 {
+#if GTK_MAJOR_VERSION >= 3
     GtkWidget *window, *hpanes, *vpanes, *buttons[3];
     gtk_init (&argc, &argv);
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -24,4 +25,8 @@ int main (int argc, char *argv[])
     gtk_widget_show_all (window);
     gtk_main ();
     return 0;
+#else
+    fprintf(stderr, "GTK major version %d is not supported!\n", GTK_MAJOR_VERSION);
+    return 1;
+#endif
 }
