@@ -34,9 +34,9 @@ clean:
 	rm -f *.obj
 	$(foreach PROG,$(PROGS),rm -f $(PROG);)
 
-.gitignore: .gitignore-tmpl
+.gitignore: .gitignore-tmpl Makefile
 	cp -f $< $@
 	@echo "">>$@
-	@echo "# Unix executables">>$@
+	echo "# Unix executables">>$@
 	@$(foreach PROG,$(PROGS),echo $(PROG) >>$@;)
 
