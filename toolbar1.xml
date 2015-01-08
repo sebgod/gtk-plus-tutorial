@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<interface>
+    <object class="GtkUIManager" id="uimanager">
+        <child>
+            <object class="GtkActionGroup" id="aktionen">
+                <child>
+                    <object class="GtkAction" id="datei">
+                        <property name="label">_Datei</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="exit">
+                        <property name="label">_Beenden</property>
+                        <property name="stock-id">gtk-quit</property>
+                        <signal name="activate" handler="gtk_main_quit"/>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="bearbeiten">
+                        <property name="label">_Bearbeiten</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="fettschrift">
+                        <property name="label">_fett</property>
+                        <property name="stock-id">gtk-bold</property>
+                        <signal name="activate" handler="fettschreiben" object="textview" />
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="kursivschrift">
+                        <property name="label">_kursiv</property>
+                        <property name="stock-id">gtk-italic</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="normalschrift">
+                        <property name="label">_normal</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+        <ui>
+            <menubar name="menubar">
+                <menu action="datei" >
+                    <menuitem action="exit" />
+                </menu>
+                <menu action="bearbeiten">
+                    <menuitem action="fettschrift" />
+                    <menuitem action="kursivschrift" />
+                    <menuitem action="normalschrift" />
+                </menu>
+            </menubar>
+            <toolbar  name="toolbar1" >
+                <toolitem name="fett" action="fettschrift" />
+                <toolitem name="kursiv" action="kursivschrift" />
+                <toolitem name="normal" action="normalschrift" />
+            </toolbar>
+        </ui>
+    </object>
+ 
+    <object class="GtkWindow" id="hauptfenster" >
+        <signal name="destroy" handler="gtk_main_quit"/>
+        <child>
+            <object class="GtkVBox" id="vbox-layout">
+                <property name="homogeneous">FALSE</property>
+                <child>
+                    <object class="GtkMenuBar" id="menubar" constructor="uimanager" />
+                    <packing>
+                        <property name="expand">FALSE</property>
+                        <property name="fill">FALSE</property>
+                    </packing>
+                </child>
+                <child>
+                    <object class="GtkToolbar" id="toolbar1" constructor="uimanager" />
+                    <packing>
+                        <property name="expand">FALSE</property>
+                        <property name="fill">FALSE</property>
+                    </packing>
+                </child>
+                <child>
+                    <object class="GtkTextView" id="textview" />
+                </child>
+                <child>
+                    <object class="GtkLabel" id="mein-label-1">
+                        <property name="label">Kleiner Editor</property>
+                    </object>
+                    <packing>
+                        <property name="expand">FALSE</property>
+                        <property name="fill">FALSE</property>
+                    </packing>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

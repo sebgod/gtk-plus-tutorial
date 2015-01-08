@@ -27,3 +27,18 @@
 *.i*86
 *.x86_64
 *.hex
+
+# Unix executables
+hello_world
+stretch_manual
+stretch_combined
+table_layout_depr
+free_layout
+box_layout_vbox_depr
+box_layout_combined_depr
+xml_manual_signal
+xml_automatic_singal
+xml_connection_mapper
+menubar
+menu2_extern
+toolbar1_extern

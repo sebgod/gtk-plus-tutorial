@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<interface>
+    <object class="GtkUIManager" id="uimanager">
+        <child>
+            <object class="GtkActionGroup" id="aktionen">
+                <child>
+                    <object class="GtkAction" id="datei">
+                        <property name="label">_Datei</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="neu">
+                        <property name="label">_Neue Datei</property>
+                        <signal name="activate" handler="kleine_callback"/>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="exit">
+                        <property name="label">_Beenden</property>
+                        <property name="stock-id">gtk-quit</property>
+                        <signal name="activate" handler="gtk_main_quit"/>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkAction" id="bearbeiten">
+                        <property name="label">_Bearbeiten</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+        <ui>
+            <menubar name="menubar">
+                <menu action="datei" >
+                    <menuitem action="neu" />
+                    <separator />
+                    <menuitem action="exit" />
+                </menu>
+                <menu action="bearbeiten" />
+            </menubar>
+        </ui>
+    </object>
+    <object class="GtkWindow" id="hauptfenster" >
+        <signal name="destroy" handler="gtk_main_quit"/>
+        <child>
+            <object class="GtkVBox" id="vbox-layout">
+                <property name="homogeneous">FALSE</property>
+                <child>
+                    <object class="GtkMenuBar" id="menubar" constructor="uimanager" />
+                    <packing>
+                        <property name="expand">FALSE</property>
+                        <property name="fill">FALSE</property>
+                    </packing>
+                </child>
+                <child>
+                    <object class="GtkCalendar" id="calender">
+                        <signal name="day-selected" handler="tag_auswaehlen" object="mein-label-1" />
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="mein-label-1">
+                        <property name="label">Und heute passierte folgendes...</property>
+                    </object>
+                    <packing>
+            	        <property name="expand">FALSE</property>
+                        <property name="fill">FALSE</property>
+                    </packing>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>
