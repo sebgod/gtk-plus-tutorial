@@ -32,6 +32,7 @@ clean:
 	rm -f *.exe
 	rm -f *.o
 	rm -f *.obj
+	$(foreach PROG,$(PROGS),rm -f $(PROG);)
 
 .gitignore: .gitignore-tmpl
 	cp -f $< $@
