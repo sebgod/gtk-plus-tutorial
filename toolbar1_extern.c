@@ -17,9 +17,12 @@ G_MODULE_EXPORT void fettschreiben (GtkWidget *t, gpointer d)
     /* Nachsehen, ob dieser tag schon gespeichert ist */
     tag_tabelle = gtk_text_buffer_get_tag_table (buffer);
     fett = gtk_text_tag_table_lookup (tag_tabelle, "fett_monospace");
-    if (fett == NULL)
+    if (fett == NULL) {
         /* sonst neu erstellen */
-        fett = gtk_text_buffer_create_tag (buffer, "fett_monospace", "family", "Monospace", "weight", PANGO_WEIGHT_BOLD, NULL);
+        fett = gtk_text_buffer_create_tag (buffer, "fett_monospace",
+                                           "family", "Monospace", "weight",
+                                           PANGO_WEIGHT_BOLD, NULL);
+    }
     /* tag anwenden */
     gtk_text_buffer_apply_tag (buffer, fett, &anfang, &ende);
 }
